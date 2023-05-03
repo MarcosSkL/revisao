@@ -6,23 +6,25 @@ import Link from 'next/link'
 const Detalhes = ({ deputados, despesas, profissao }) => {
 
     return (
-        <Pagina>
-            <Row>
+        <Pagina titulo={deputados.dados.ultimoStatus.nome}>
+            <Row key={deputados.id} >
 
                 <Col md={3}>
                     <Card>
                         <Card.Img variant="top" src={deputados.dados.ultimoStatus.urlFoto} alt={deputados.dados.nomeCivil} />
                         <Card.Body className='bg-secondary text-white'>
-                            <Card.Title>{deputados.dados.nomeCivil}</Card.Title>
-                            <div className="d-flex flex-column align-items-end">
-                                <Link href={'/deputados/'} className='btn btn-info text-white'>Voltar</Link>
-                            </div>
+                            <Card.Title className='h5'>{deputados.dados.nomeCivil}</Card.Title>
+                            <p>Partido: {deputados.dados.ultimoStatus.siglaPartido}<br />
+                                UF Partido: {deputados.dados.ultimoStatus.siglaUf} </p>
                         </Card.Body>
                     </Card>
+                    <div className="d-flex flex-column align-items-start pt-3">
+                        <Link href={'/deputados/'} className='btn btn-info text-white'>Voltar</Link>
+                    </div>
                 </Col>
                 <Col md={6}>
                     <h3>Despesas</h3>
-                    <Table striped>
+                    <Table bordered hover size="sm">
                         <thead>
                             <tr>
                                 <th>Data</th>
@@ -34,7 +36,7 @@ const Detalhes = ({ deputados, despesas, profissao }) => {
                             {despesas.dados.map(item => (
                                 <tr>
                                     <td>{item.dataDocumento}</td>
-                                    <td>{item.tipoDocumento}</td>
+                                    <td>{item.tipoDespesa}</td>
                                     <td>{item.valorDocumento}</td>
                                 </tr>
                             ))}
@@ -43,14 +45,13 @@ const Detalhes = ({ deputados, despesas, profissao }) => {
 
                 </Col>
                 <Col md={3}>
-                    <h3>Profissão</h3>
+                    <h3>Profissões</h3>
                     <ul>
-                        <li>
-                           {profissao.dados.map(item =>(
-                            {item.nome}
-                           ))}
-                           
-                        </li>
+                        {profissao.dados.map(item => (
+                            <li style={{ listStyle: "inside" }}>
+                                {item.titulo}
+                            </li>
+                        ))}
                     </ul>
                 </Col>
             </Row>
