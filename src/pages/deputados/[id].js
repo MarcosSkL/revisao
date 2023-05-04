@@ -12,14 +12,14 @@ const Detalhes = ({ deputados, despesas, profissao }) => {
                 <Col md={3}>
                     <Card>
                         <Card.Img variant="top" src={deputados.dados.ultimoStatus.urlFoto} alt={deputados.dados.nomeCivil} />
-                        <Card.Body className='bg-secondary text-white'>
+                        <Card.Body className='bg-gradient-to-tl from-indigo-100 via-indigo-400 to-blue-900 text-white'>
                             <Card.Title className='h5'>{deputados.dados.nomeCivil}</Card.Title>
                             <p>Partido: {deputados.dados.ultimoStatus.siglaPartido}<br />
                                 UF Partido: {deputados.dados.ultimoStatus.siglaUf} </p>
                         </Card.Body>
                     </Card>
-                    <div className="d-flex flex-column align-items-start pt-3">
-                        <Link href={'/deputados/'} className='btn btn-info text-white'>Voltar</Link>
+                    <div className="d-flex flex-column align-items-start pt-1">
+                        <Link href={'/deputados/'} className='btn btn-primary text-white'>Voltar</Link>
                     </div>
                 </Col>
                 <Col md={6}>

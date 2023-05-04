@@ -14,11 +14,11 @@ const index = ({deputados}) => {
                 {deputados.dados.map(item => (
                     <Col key={item.id} md={3} className="mb-4" >
                         <Card>
-                            <Card.Img style={{ Width: '100%', height: '100%' }} variant="top" src={item.urlFoto} alt={item.name} />
-                            <Card.Body className='bg-secondary text-white'>
+                            <Card.Img style={{ Width: '100%', height: '100%' }} variant="top" src={item.urlFoto} title={item.name} />
+                            <Card.Body className='bg-gradient-to-tl from-indigo-100 via-indigo-400 to-blue-900 text-white'>
                                 <Card.Title>{item.nome}</Card.Title>
                                 <div className="d-flex flex-column align-items-end">
-                                    <Link href={'/deputados/' + item.id} className='btn btn-info text-white'>Detalhes</Link>
+                                    <Link href={'/deputados/' + item.id} className='btn btn-primary text-white'>Detalhes</Link>
                                 </div>
                             </Card.Body>
                         </Card>
