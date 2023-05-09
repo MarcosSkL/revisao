@@ -7,9 +7,9 @@ const Detalhes = ({ deputados, despesas, profissao }) => {
 
     return (
         <Pagina titulo={deputados.dados.ultimoStatus.nome}>
-            <Row key={deputados.id} >
+            <Row>
 
-                <Col md={3}>
+                <Col key={deputados.dados.ultimoStatus.id} md={3}>
                     <Card>
                         <Card.Img variant="top" src={deputados.dados.ultimoStatus.urlFoto} alt={deputados.dados.nomeCivil} />
                         <Card.Body className='bg-gradient-to-tl from-indigo-100 via-indigo-400 to-blue-900 text-white'>
@@ -34,7 +34,7 @@ const Detalhes = ({ deputados, despesas, profissao }) => {
                         </thead>
                         <tbody>
                             {despesas.dados.map(item => (
-                                <tr>
+                                <tr key={item.codDocumento}>
                                     <td>{item.dataDocumento}</td>
                                     <td>{item.tipoDespesa}</td>
                                     <td>{item.valorDocumento}</td>
@@ -48,7 +48,7 @@ const Detalhes = ({ deputados, despesas, profissao }) => {
                     <h3>Profissões</h3>
                     <ul>
                         {profissao.dados.map(item => (
-                            <li style={{ listStyle: "inside" }}>
+                            <li key={item.id} style={{ listStyle: "inside" }}>
                                 {item.titulo}
                             </li>
                         ))}
